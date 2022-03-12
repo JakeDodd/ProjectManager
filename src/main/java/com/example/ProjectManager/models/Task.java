@@ -24,8 +24,8 @@ public class Task {
 
     @NotBlank
     @Size(max = 120)
-    @Column(name = "project_name", nullable = false)
-    private String name;
+    @Column(name = "task_name", nullable = false)
+    private String taskName;
 
     @Size(max = 120)
     @Column(name = "description")
@@ -50,9 +50,9 @@ public class Task {
 
     }
 
-    public Task(UUID id, String name, String description, Timestamp startDate, Timestamp endDate, StatusEnum status, Project project) {
+    public Task(UUID id, String taskName, String description, Timestamp startDate, Timestamp endDate, StatusEnum status, Project project) {
         this.id = id;
-        this.name = name;
+        this.taskName = taskName;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -68,12 +68,12 @@ public class Task {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     public String getDescription() {

@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +25,7 @@ public class Project {
     @NotBlank
     @Size(max = 120)
     @Column(name = "project_name", nullable = false)
-    private String name;
+    private String projectName;
 
     @Size(max = 120)
     @Column(name = "description")
@@ -51,9 +50,9 @@ public class Project {
 
     }
 
-    public Project(@NotBlank @Size(max = 120) String name, @Size(max = 120) String description, Timestamp startDate, Timestamp endDate, Timestamp goalDate, List<User> projectUsers){
+    public Project(@NotBlank @Size(max = 120) String projectName, @Size(max = 120) String description, Timestamp startDate, Timestamp endDate, Timestamp goalDate, List<User> projectUsers){
         super();
-        this.name = name;
+        this.projectName = projectName;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -69,12 +68,12 @@ public class Project {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public String getDescription() {
