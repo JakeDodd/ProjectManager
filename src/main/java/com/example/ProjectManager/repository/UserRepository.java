@@ -15,6 +15,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     Optional<User> findByUsername(String username);
 
+    Boolean existsByUsername(String username);
+
     @Query(value = "select * from user where upper(username) like ?1", nativeQuery = true)
     List<User> searchUsersByName(String userNameSearch);
 
