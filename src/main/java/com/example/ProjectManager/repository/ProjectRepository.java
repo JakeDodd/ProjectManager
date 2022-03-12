@@ -18,4 +18,7 @@ public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
     @Query(value = "select * from project where upper(project_name) like ?1", nativeQuery = true)
     List<Project> searchProjectsByName(String projectNameSearch);
+
+    @Query(value = "select p.* from project p join user_project u on p.id = u.project_id where u.user_id = ?1", nativeQuery = true)
+    List<Project> searchProjectByUser(UUID userId);
 }

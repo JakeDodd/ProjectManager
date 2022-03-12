@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("/api/project")
 @RestController
@@ -24,12 +25,16 @@ public class ProjectController {
         return projectRepository.findAll();
     }
 
-    @GetMapping("/api/project/projectSearch/{projectNameSearch}")
-    public List<Project> searchProjectsByName(@PathVariable String projectNameSearch){
-        List<Project> projects = projectRepository.searchProjectsByName("%" + projectNameSearch.toUpperCase() + "%");
+    @GetMapping("/projectSearch/{projectName}")
+    public List<Project> searchProjectsByName(@PathVariable String projectName){
+        List<Project> projects = projectRepository.searchProjectsByName("%" + projectName.toUpperCase() + "%");
         return projects;
     }
 
-
+    @GetMapping("/userProjectSearch/{userId}")
+    public List<Project> searchProjectByUserId(@PathVariable UUID userId){
+        List<Project> projects = projectRepository.searchProjectByUser(userId);
+        return projects;
+    }
 
 }
